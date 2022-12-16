@@ -1,51 +1,51 @@
 #include <stdio.h>
 #define MAX 1000
 
-/*void organizar_vetor(int *vetor, int entrada){
-    
-int i, j, aux;
+int comparar_valores(int x, int y, int z, int xa, int ya, int za) {
+int valorx, valory, valorz;
 
-for(i=1;i<entrada;i++){
-    printf("arroz\n");
-    
-    for(j=0;j<entrada-1;j++){
-        printf("comida\n");
-        
-        if(vetor[j]<vetor[j++]){
-            printf("batata\n");
-            
-            aux = vetor[j];
-            vetor[j] = vetor[j++];
-            vetor[j++] = aux;
-        }
-        
-    }
-}
-}*/
+valorx = x - xa;
+valory = y - ya;
+valorz = z - za;
 
-void bubble_sort (int vetor[], int n) {
-    int k, j, aux;
+if(valorx<0)
+    valorx *= -1;
+if(valory<0)
+    valory *= -1;
+if(valorz<0)
+    valorz *= -1;
 
-    for (k = 1; k < n; k++) {
-      //  printf("\n[%d] ", k);
+if(valorx>valory && valorx > valorz)
+    return valorx;
+else if(valory>valorx && valory > valorz)
+    return valory;
+else
+    return valorz;
 
-        for (j = 0; j < n - 1; j++) {
-          //  printf("%d, ", j);
-
-            if (vetor[j] > vetor[j + 1]) {
-                aux          = vetor[j];
-                vetor[j]     = vetor[j + 1];
-                vetor[j + 1] = aux;
-            }
-        }
-    }
 }
 
 
 int main(){
-int entrada, i, vetor[MAX];
+int teste, x, y, z, xa, ya, za, valor;
 
-scanf("%d", &entrada);
+scanf("%d", &teste);
+
+scanf("%d %d %d", &xa, &ya, &za);
+
+teste--;
+
+while(teste--){
+scanf("%d %d %d", &x, &y, &z);
+
+valor = comparar_valores(x, y, z, xa, ya, za);
+
+printf("%2.d", valor);
+
+xa = x;
+ya = y;
+za = z;
+
+}
 
 return 0;
 }
